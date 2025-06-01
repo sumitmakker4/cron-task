@@ -26,7 +26,7 @@ function updateStatus(status) {
 }
 
 function createCronJob() {    
-job = cron.schedule('* * * * *', writeToTable, {
+job = cron.schedule('0 0 * * *', writeToTable, {
     scheduled: true,
     timezone: 'Asia/Kolkata'
   });

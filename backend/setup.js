@@ -4,7 +4,6 @@ require('dotenv').config();
 async function setupDatabase() {
   const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
-  // Connect without specifying DB to create it first
   const connection = await mysql.createConnection({
     host: DB_HOST,
     user: DB_USER,
@@ -12,7 +11,6 @@ async function setupDatabase() {
     multipleStatements: true
   });
 
-  // Create DB and tables
   const createDbAndTables = `
     CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;
     USE \`${DB_NAME}\`;

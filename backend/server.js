@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-createCronJob(); // Start cron when server starts
+createCronJob();
 
 app.delete('/api/logs', (req, res) => {
   db.query('DELETE FROM cron_task', (err, result) => {
@@ -32,8 +32,8 @@ app.post('/api/restore', (req, res) => {
 
 app.post('/api/recreate', async (req, res) => {
   try {
-    await recreateCronJob(); // wait for the cron to be recreated
-    res.json({ message: 'Cron job recreated' }); // send a success response
+    await recreateCronJob();
+    res.json({ message: 'Cron job recreated' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
